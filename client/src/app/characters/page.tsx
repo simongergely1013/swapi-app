@@ -41,8 +41,7 @@ const Page = () => {
 
   return (
     <div className={styles.main}>
-      <h1 className={styles.appName}>SWAPI APP</h1>
-      <div className='flex flex-wrap justify-center items-center'>
+      <div className='flex flex-wrap justify-center items-center w-full'>
         {characters.map((character, index) => 
             (<Card key={character.name} name={character.name} image={Object.values(characterImages[index])}/>)
         )}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { spaceGrotesk } from './fonts'
+import NavBar from "./components/NavBar";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${spaceGrotesk.className} antialiased`}>
+        <NavBar/>
         {children}
         </body>
     </html>

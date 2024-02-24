@@ -1,4 +1,5 @@
-import React from "react";
+'use client';
+import React, {useState} from "react";
 
 interface CardProps {
     name: string;
@@ -6,14 +7,16 @@ interface CardProps {
 }
 
 const styles = {
-    main: "flex flex-col items-center w-80 h-80 p-4 m-2 border rounded-lg",
-    name: "mb-4",
-    image: "w-1/2 h-3/4"
+    main: "flex flex-col items-center justify-center gap-2 bg-[#191925] w-64 h-64 p-4 m-2 border border-black rounded-lg cursor-pointer transition ease-in-out",
+    name: "mb-4 text-lg tracking-wider",
+    image: "w-32 h-32",
 }
 
 const Card = ({name,image}: CardProps) => {
+    const [isHovered, setIsHovered] = useState(false);
+
     return (
-        <div className={styles.main}>
+        <div className={`${styles.main} ${isHovered && 'scale-105 border-[#7474F299]'}`} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
             <h2 className={styles.name}>{name}</h2>
             <img className={styles.image} src={image}/>
         </div>
