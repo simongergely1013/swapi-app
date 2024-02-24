@@ -7,7 +7,7 @@ interface CardProps {
 }
 
 const styles = {
-    main: "flex flex-col items-center justify-center gap-2 bg-[#191925] w-64 h-64 p-4 m-2 border border-black rounded-lg cursor-pointer transition ease-in-out",
+    main: "flex flex-col items-center justify-center gap-2 bg-[#191925] w-64 h-64 p-4 m-3 rounded-lg cursor-pointer transition ease-in-out",
     name: "mb-4 text-lg tracking-wider",
     image: "w-32 h-32",
 }

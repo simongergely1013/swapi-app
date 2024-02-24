@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const styles = {
   main:"flex min-h-screen flex-col items-center p-24 border-l border-r border-slate-950 text-2xl",
-  link: "hover:text-blue-700"
+  link: "hover:text-blue-700 transition ease-in-out"
 }
 
 export default function Home() {

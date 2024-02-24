@@ -1,4 +1,5 @@
 'use client';
+import { MoonLoader } from 'react-spinners';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import characterImages from './characterImages';
@@ -42,6 +43,7 @@ const Page = () => {
   return (
     <div className={styles.main}>
       <div className='flex flex-wrap justify-center items-center w-full'>
+         <MoonLoader loading={characters.length <= 0}  color="hsla(168, 67%, 53%, 1)" size={100}/>
         {characters.map((character, index) => 
             (<Card key={character.name} name={character.name} image={Object.values(characterImages[index])}/>)
         )}
