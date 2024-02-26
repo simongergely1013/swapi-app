@@ -45,7 +45,7 @@ const Page = () => {
       <div className='flex flex-wrap justify-center items-center w-full'>
          <MoonLoader loading={characters.length <= 0}  color="hsla(168, 67%, 53%, 1)" size={100}/>
         {characters.map((character, index) => 
-            (<Card key={character.name} name={character.name} image={Object.values(characterImages[index])} films={character.films} height={character.height} mass={character.mass}/>)
+            (<Card key={character.name} name={character.name} image={Object.values(characterImages[index])} url={character.url} films={character.films}/>)
         )}
       </div>
     </div>
