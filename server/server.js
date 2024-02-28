@@ -4,13 +4,12 @@ const axios = require('axios');
 
 const app = express();
 
-// app.use(cors({
-//   origin: [""],
-//   methods: ["GET"],
-//   credentials: true
-// }));
+app.use(cors({
+  origin: ["https://swapi-app-client-eight.vercel.app/"],
+  methods: ["GET"],
+  credentials: true
+}));
 
-app.use(cors());
 app.use(express.json());
 
 const SWAPI_BASE_URL = 'https://swapi.dev/api';
