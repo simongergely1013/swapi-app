@@ -1,0 +1,44 @@
+'use client';
+import { Character } from "../characters/character.interface";
+import React, { useState } from "react";
+import SearcIcon from "./SearchIcon";
+
+interface SearcProps {
+    characters: Character[];
+}
+
+const styles = {
+    container: "relative mr-3",
+    input: "w-[356px] h-[48px] pl-6 mb-10 text-black text-bold"
+}
+
+const Search = ({characters}: SearcProps) => {
+    const [value, setValue] = useState("");
+    const [searchResult, setSearchResult] = useState<Character[]>();
+    const isReady = characters.length > 0; 
+
+    const handleSearch = (input: string) => {
+        setValue(input);
+        const filteredCharacters = characters.filter(el => {
+            const upperCase = el.name.toUpperCase();
+            const lowerCase = el.name.toLowerCase();
+            if(upperCase.includes(input) || lowerCase.includes(input)) return el.name;
+        })
+        setSearchResult(filteredCharacters);
+    }
+
+    return(
+        <div className={styles.container}>
+            {isReady &&
+            <>
+            <div className="absolute right-3 top-3"><SearcIcon/></div>
+            <input className={styles.input} value={value} onChange={(e) => handleSearch(e.target.value)} placeholder="Search character..."/>
+            </>}
+            {value !== "" && <div className="absolute z-10 flex flex-col justify-center w-80 p-4 bg-white top-12 left-2 text-black">
+                                {searchResult?.map(character => <p className="cursor-pointer">{character.name}</p>)}
+                            </div>}
+        </div>
+    )
+}
+
+export default Search;

@@ -1,4 +1,5 @@
 'use client';
+import { Character } from "../characters/character.interface";
 import axios from "axios";
 import React, {useState} from "react";
 import ReactModal from 'react-modal';
@@ -10,32 +11,22 @@ interface CardProps {
     url: string;
     films: string[];
 }
-
-interface Character {
-    birthYear: string;
-    eyeColor: string;
-    films: string[];
-    gender: string;
-    hairColor: string;
-    height: string | undefined;
-    homeworld: string;
-    mass: string | undefined;
-    name: string;
-    skinColor: string;
-    created: string;
-    edited: string;
-    species: string[]; 
-    starships: string[]; 
-    url: string;
-    vehicles: string[];
-}
-
 type FilmTitles = Promise<string>[];
 
 const styles = {
     main: "flex flex-col items-center justify-center gap-2 bg-[#191925] w-64 h-64 p-4 m-3 rounded-lg cursor-pointer transition ease-in-out",
     name: "mb-4 text-lg tracking-wider",
     image: "w-24 h-32",
+    modalWrapper: "flex flex-col gap-2 h-full bg-[#191925] p-6 tracking-wider",
+    modalTop: "flex items-center justify-end py-1 px-4",
+    loader: "p-10 text-center text-2xl",
+    modalContainer: "flex flex-col justify-center",
+    modalName: "flex items-center justify-center gap-4 mb-4 text-4xl",
+    attributesContainer: "flex justify-center mb-4",
+    attributes: "flex items-center gap-4 text-lg",
+    filmsHeader: "flex items-center justify-center gap-4 text-xl mb-2",
+    listContainer: "flex justify-center",
+    ul: "gap-2 pl-20 py-2 text-lg list-disc"
 }
 
 const modalStyles = {
@@ -92,22 +83,22 @@ const Card = ({name,image, url, films}: CardProps) => {
     return (
         <>
         <ReactModal isOpen={isModalOpen} style={modalStyles}>
-            <div className="flex flex-col gap-2 h-full bg-[#191925] p-6 tracking-wider">
-                <div className="flex items-center justify-end py-1 px-4"><XButton onClick={closeModal}/></div>
+            <div className={styles.modalWrapper}>
+                <div className={styles.modalTop}><XButton onClick={closeModal}/></div>
                 {characterData === undefined 
-                ? <div className="p-10 text-center text-2xl">Loading...</div> 
-                : <div className="flex flex-col justify-center">
-                    <p className="flex items-center justify-center gap-4 mb-4 text-4xl"><span>{characterData?.name}</span></p>
-                        <div className="flex justify-center mb-4">
-                            <div className="">
-                                <p className="flex items-center gap-4 text-lg"><span>Height:</span><span>{characterData?.height} cm</span></p>
-                                <p className="flex items-center gap-4 text-lg"><span>Mass:</span><span>{characterData?.mass} kg</span></p>
+                ? <div className={styles.loader}>Loading...</div> 
+                : <div className={styles.modalContainer}>
+                    <p className={styles.modalName}><span>{characterData?.name}</span></p>
+                        <div className={styles.attributesContainer}>
+                            <div>
+                                <p className={styles.attributes}><span>Height:</span><span>{characterData?.height} cm</span></p>
+                                <p className={styles.attributes}><span>Mass:</span><span>{characterData?.mass} kg</span></p>
                             </div>
                          </div>
                             <div className="">
-                                <p className="flex items-center justify-center gap-4 text-xl mb-2"><span>🎥 Films played in:</span></p>
-                                    <div className="flex justify-center">
-                                        <ul className="gap-2 pl-20 py-2 text-lg list-disc">
+                                <p className={styles.filmsHeader}><span>🎥 Films played in:</span></p>
+                                    <div className={styles.listContainer}>
+                                        <ul className={styles.ul}>
                                         {filmTitles.map(film => (<li>{film}</li>))}
                                         </ul>
                                      </div>
