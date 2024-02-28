@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 
 const styles = {
@@ -5,10 +6,12 @@ const styles = {
   link: "hover:text-blue-700 transition ease-in-out"
 }
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
     <main className={styles.main}>
         <Link href={"/characters"} className={styles.link}>Click here to see all the characters</Link>
     </main>
   );
 }
+
+export default Home;

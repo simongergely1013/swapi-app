@@ -44,7 +44,7 @@ const modalStyles = {
   };
 
 const Card = ({name,image, url, films}: CardProps) => {
-    const [isHovered, setIsHovered] = useState(false);
+    const [isHovered, setIsHovered] = useState<boolean>(false);
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [characterData, setCharacterData] = useState<Character>();
     const [filmTitles, setFilmTitles] = useState<FilmTitles>([]);

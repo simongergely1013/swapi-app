@@ -1,9 +1,8 @@
-export interface CharacterImage {
+interface CharacterImage {
    name: string;
    imageUrl: string; 
 }
-
-export const characterImages: CharacterImage[] = [
+const characterImages: CharacterImage[] = [
     {   name : "Luke Skywalker",
         imageUrl: "https://i.ibb.co/wBWvF84/luke.jpg"},
     {   name: "C-3PO",
@@ -25,3 +24,5 @@ export const characterImages: CharacterImage[] = [
     {   name : "Obi-Wan Kenobi",
         imageUrl: "https://i.ibb.co/K7BCytP/OBIWAN.png"}
 ]
+
+export default characterImages;

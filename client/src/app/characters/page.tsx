@@ -1,18 +1,19 @@
 'use client';
 import { Character } from './character.interface';
 import { MoonLoader } from 'react-spinners';
-import {characterImages, CharacterImage} from './characterImages';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../components/Card';
 import Search from '../components/Search';
+import characterImages from './characterImages';
 
 const styles = {
     main:"flex min-h-screen flex-col items-center px-24 py-16 border-l border-r border-slate-950",
     appName: "font-bold text-xl",
+    cardsWrapper: "flex flex-wrap justify-center items-center w-full"
   }
 
-const Page = () => {
+const Page: React.FC = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
   const [gender, setGender] = useState<string>("");
@@ -66,7 +67,7 @@ const Page = () => {
         <>
         <div className='flex flex-col mr-4'>
           <label>Choose gender:</label>
-          <select onChange={(e) => setGender(e.target.value)} id='gender'>
+          <select className="rounded" onChange={(e) => setGender(e.target.value)} id='gender'>
               <option value="">--No filter--</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
@@ -74,7 +75,7 @@ const Page = () => {
         </div>
         <div className='flex flex-col'>
           <label>Choose homeworld:</label>
-          <select onChange={(e) => setHomeworld(e.target.value)} id='homeworld'>
+          <select className="rounded" onChange={(e) => setHomeworld(e.target.value)} id='homeworld'>
               <option value="">--No filter--</option>
               <option value="Tatooine">Tatooine</option>
               <option value="Alderaan">Alderaan</option>
@@ -90,11 +91,11 @@ const Page = () => {
         </div>
         </>}
       </div>
-      <div className='flex flex-wrap justify-center items-center w-full'>
+      <div className={styles.cardsWrapper}>
          <MoonLoader loading={filteredCharacters.length <= 0}  color="hsla(168, 67%, 53%, 1)" size={100}/>
-        {filteredCharacters.map((character, index) => {
+        {filteredCharacters.map((character) => {
            const image = characterImages.filter(el => el.name === character.name);
-           const imageUrl = image[0].imageUrl;
+           const imageUrl: string = image[0].imageUrl;
            return <Card key={character.name} name={character.name} image={imageUrl} url={character.url} films={character.films}/>
         }
            
