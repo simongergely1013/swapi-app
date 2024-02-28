@@ -13,6 +13,10 @@ app.use(express.json());
 
 const SWAPI_BASE_URL = 'https://swapi.dev/api';
 
+app.get("/", (req, res) => {
+  res.json("SWAPI APP")
+})
+
 // Route to get data of all the characters
 app.get("/characters", async (req, res) => {
 try {
