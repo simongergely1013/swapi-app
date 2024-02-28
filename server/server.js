@@ -7,7 +7,6 @@ const app = express();
 app.use(cors({
   origin: ["https://swapi-app-client-eight.vercel.app"],
   methods: ["GET"],
-  credentials: true
 }));
 
 app.use(express.json());
