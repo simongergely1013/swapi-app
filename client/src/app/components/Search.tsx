@@ -37,7 +37,7 @@ const Search = ({characters}: SearcProps) => {
             <input className={styles.input} value={value} onChange={(e) => handleSearch(e.target.value)} placeholder="Search character..."/>
             </>}
             {value !== "" && <div className={styles.searchResults}>
-                                {searchResult?.map(character => <p className="cursor-pointer">{character.name}</p>)}
+                                {searchResult?.map(character => <p key={character.name} className="cursor-pointer">{character.name}</p>)}
                             </div>}
         </div>
     )

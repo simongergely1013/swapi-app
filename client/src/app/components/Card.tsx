@@ -1,5 +1,6 @@
 'use client';
 import { Character } from "../characters/character.interface";
+import Image from "next/image";
 import axios from "axios";
 import React, {useState} from "react";
 import ReactModal from 'react-modal';
@@ -99,7 +100,7 @@ const Card = ({name,image, url, films}: CardProps) => {
                                 <p className={styles.filmsHeader}><span>🎥 Films played in:</span></p>
                                     <div className={styles.listContainer}>
                                         <ul className={styles.ul}>
-                                        {filmTitles.map(film => (<li>{film}</li>))}
+                                        {filmTitles.map((film, index) => (<li key={index}>{film}</li>))}
                                         </ul>
                                      </div>
                             </div>
@@ -110,7 +111,7 @@ const Card = ({name,image, url, films}: CardProps) => {
         </ReactModal>
         <div className={`${styles.main} ${isHovered && 'scale-105 border-[#7474F299]'}`} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} onClick={openModal}>
             <h2 className={styles.name}>{name}</h2>
-            <img className={styles.image} src={image}/>
+            <Image alt="character_image" className={styles.image} src={image}/>
         </div>
         </>
     )

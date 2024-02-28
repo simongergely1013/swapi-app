@@ -41,10 +41,6 @@ const Page: React.FC = () => {
     fetchCharacters();
   }, []);
 
-  useEffect(() => {
-    filterCharacters();
-  }, [gender, homeworld]);
-
   const filterCharacters = () => {
     let filteredList = characters;
 
@@ -58,6 +54,12 @@ const Page: React.FC = () => {
 
     setFilteredCharacters(filteredList);
   };
+
+  useEffect(() => {
+    filterCharacters(); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [gender, homeworld, characters]);
+
+
    
   return (
     <div className={styles.main}>
