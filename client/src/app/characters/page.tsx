@@ -1,9 +1,9 @@
 'use client';
 import { Character } from './character.interface';
 import { MoonLoader } from 'react-spinners';
+import {characterImages, CharacterImage} from './characterImages';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import characterImages from './characterImages';
 import Card from '../components/Card';
 import Search from '../components/Search';
 
@@ -92,8 +92,12 @@ const Page = () => {
       </div>
       <div className='flex flex-wrap justify-center items-center w-full'>
          <MoonLoader loading={filteredCharacters.length <= 0}  color="hsla(168, 67%, 53%, 1)" size={100}/>
-        {filteredCharacters.map((character, index) => 
-            (<Card key={character.name} name={character.name} image={Object.values(characterImages[index])} url={character.url} films={character.films}/>)
+        {filteredCharacters.map((character, index) => {
+           const image = characterImages.filter(el => el.name === character.name);
+           const imageUrl = image[0].imageUrl;
+           return <Card key={character.name} name={character.name} image={imageUrl} url={character.url} films={character.films}/>
+        }
+           
         )}
       </div>
     </div>
