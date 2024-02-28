@@ -22,7 +22,7 @@ const Page: React.FC = () => {
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
-        const { data } = await axios.get<{ results: Character[] }>("http://localhost:5000/characters");
+        const { data } = await axios.get<{ results: Character[] }>("https://swapi-app-server.vercel.app/characters");
         const characterList: Character[] = [];
 
         for (const character of data.results) {
